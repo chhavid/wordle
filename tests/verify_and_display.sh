@@ -29,7 +29,7 @@ function verify_expectation() {
 		FAILED_TESTS=$((${FAILED_TESTS} + 1))
 	fi
 
-	print_function_name $function_name
+	print_function_name ${function_name}
 	echo -e "${test_outcome} ${test_case}"
 }
 
@@ -42,7 +42,7 @@ function display_failed_tests() {
 
 	for failed_test in "${FAILED_TESTS_CONTENT[@]}"; do
 		function_name=$(echo ${failed_test} | cut -d";" -f1)
-		print_function_name $function_name
+		print_function_name ${function_name}
 
 		echo -e "\n${NORMAL}     ${test_number}. Test case : "$(echo ${failed_test} | cut -d";" -f2)
 		echo -e "\tInputs    : "$(echo ${failed_test} | cut -d";" -f3)
@@ -65,6 +65,6 @@ function print_function_name {
 
 	if [[ "${function_name}" != "${LAST_FUNCTION_NAME}" ]]; then
 		LAST_FUNCTION_NAME="${function_name}"
-		echo -e "\n${BOLD} $function_name"
+		echo -e "\n${BOLD} ${function_name}"
 	fi
 }

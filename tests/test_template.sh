@@ -28,11 +28,11 @@ function test_apply_template() {
     local result="pass"
     local expected='<html> <head> <title>Wordle</title> <link rel="stylesheet" href="src/styles.css" /> <link rel="shortcut icon" href="images/wordle_logo_32x32.png" type="image/x-icon"> </head> <body> <div class="page-wrapper"> <h1>WORDLE</h1> <table class="results"> <tbody> <tr> <td class="pass">a</td> <td class="_RESULT_"></td> <td class="_RESULT_"></td> <td class="_RESULT_"></td> <td class="_RESULT_"></td> </tr> <tr> <td class="_RESULT_"></td> <td class="_RESULT_"></td> <td class="_RESULT_"></td> <td class="_RESULT_"></td> <td class="_RESULT_"></td> </tr> <tr> <td class="_RESULT_"></td> <td class="_RESULT_"></td> <td class="_RESULT_"></td> <td class="_RESULT_"></td> <td class="_RESULT_"></td> </tr> <tr> <td class="_RESULT_"></td> <td class="_RESULT_"></td> <td class="_RESULT_"></td> <td class="_RESULT_"></td> <td class="_RESULT_"></td> </tr> <tr> <td class="_RESULT_"></td> <td class="_RESULT_"></td> <td class="_RESULT_"></td> <td class="_RESULT_"></td> <td class="_RESULT_"></td> </tr> <tr> <td class="_RESULT_"></td> <td class="_RESULT_"></td> <td class="_RESULT_"></td> <td class="_RESULT_"></td> <td class="_RESULT_"></td> </tr> </tbody> </table> </div> </body> </html>'
 
-    local actual=$(apply_template "$letter" "$result")
+    local actual=$(apply_template "${letter}" "${result}")
     verify_expectation "" "${expected}" "${actual}" "Should write letter and result to the template" "apply_template"
 }
 
-function all_tests () {
+function all_tests() {
     correct_position
     incorrect_position
     test_apply_template

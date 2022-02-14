@@ -42,7 +42,7 @@ function test_is_five_letter() {
     local user_guess="word"
     local expected_msg="Enter 5 letter valid word"
 
-    local actual_msg=$(validate_user_guess "$user_guess")
+    local actual_msg=$(validate_user_guess "${user_guess}")
     verify_expectation "" "${expected_msg}" "${actual_msg}" "Should show an error if user does not give five letter word" "validate_user_guess"
 }
 
@@ -51,7 +51,7 @@ function test_invalid_word() {
     local database="database/comp_choices.txt"
     local expected_msg="Not in word list"
 
-    local actual_msg=$(validate_user_guess "$user_guess" "${database}" )
+    local actual_msg=$(validate_user_guess "${user_guess}" "${database}")
     verify_expectation "" "${expected_msg}" "${actual_msg}" "Should show an error if user does not give invalid word" "validate_user_guess"
 }
 
@@ -61,12 +61,12 @@ function test_validate_user_guess() {
     local expected_status=0
     local actual_status
 
-    validate_user_guess "$user_guess" "$database"
+    validate_user_guess "${user_guess}" "${database}"
     actual_status=$?
     verify_expectation "" "${expected_status}" "${actual_status}" "Should return 0 if user gives valid word" "validate_user_guess"
 }
 
-function all_tests () {
+function all_tests() {
     is_position_incorrect
     is_letter_wrong
     test_exact_match

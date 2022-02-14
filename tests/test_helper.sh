@@ -2,11 +2,11 @@
 
 function test_select_computer_word() {
     local database="test.txt"
-    echo "hello" >$database
+    echo "hello" >${database}
     local expected_word="hello"
 
-    local actual_word=$(select_computer_word $database)
-    rm $database
+    local actual_word=$(select_computer_word ${database})
+    rm ${database}
     verify_expectation "" "${expected_word}" "${actual_word}" "Should select a random computer word from database" "select_computer_word"
 }
 
@@ -14,7 +14,7 @@ function test_capitalize_word() {
     local word="word"
     local expected="WORD"
 
-    local actual=$(capitalize_word "$word")
+    local actual=$(capitalize_word "${word}")
     verify_expectation "" "${expected}" "${actual}" "Should capitalize the given word" "capitalize_word"
 }
 
@@ -27,13 +27,13 @@ function test_read_word() {
 
 function test_write_file() {
     local target_file="test.html"
-    local expected=`cat src/template.html`
+    local expected=$(cat src/template.html)
 
-    write_file "$target_file"
-    local actual=`cat $target_file`
+    write_file "${target_file}"
+    local actual=$(cat ${target_file})
 
     verify_expectation "" "${expected}" "${actual}" "Should write to the target file" "write_file"
-    rm "$target_file"
+    rm "${target_file}"
 }
 
 function all_tests() {
